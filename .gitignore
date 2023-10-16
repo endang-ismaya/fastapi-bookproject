@@ -110,3 +110,4 @@ ipython_config.py
 .venv/
 .vscode/
 mynotes.txt
+**/*.db
