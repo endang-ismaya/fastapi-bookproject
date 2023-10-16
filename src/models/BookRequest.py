@@ -8,13 +8,15 @@ class Book:
     author: str
     description: str
     rating: int
+    published_date: int
 
-    def __init__(self, id, title, author, description, rating) -> None:
+    def __init__(self, id, title, author, description, rating, published_date) -> None:
         self.id = id
         self.title = title
         self.author = author
         self.description = description
         self.rating = rating
+        self.published_date = published_date
 
 
 class BookRequest(BaseModel):
@@ -22,7 +24,8 @@ class BookRequest(BaseModel):
     title: str = Field(min_length=3)
     author: str = Field(min_length=3)
     description: str = Field(min_length=3, max_length=100)
-    rating: int = Field(gt=-1, lt=6)
+    rating: int = Field(gt=0, lt=6)
+    published_date: int = Field(gt=1999, lt=2099)
 
     class Config:
         # Example Value on swagger API
@@ -32,5 +35,6 @@ class BookRequest(BaseModel):
                 "author": "Endang",
                 "description": "A new description of a book",
                 "rating": "5",
+                "published_date": 2023,
             }
         }
