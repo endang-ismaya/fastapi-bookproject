@@ -1,11 +1,9 @@
 from typing import Annotated
 
 from fastapi import Depends
-from src.database.db import engine, SessionLocal
-import src.database.models as models
-from sqlalchemy.orm import Session
+from src.database.db import SessionLocal
 
-models.Base.metadata.create_all(bind=engine)
+from sqlalchemy.orm import Session
 
 
 def get_db():
